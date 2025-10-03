@@ -1,0 +1,35 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int left = 0; // position for next non-zero
+
+        for (int right = 0; right < nums.length; right++) {
+            if (nums[right] != 0) {
+                // Swap nums[left] and nums[right]
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+
+                left++; // move left pointer forward
+            }
+        }
+    }
+}
+public class movezero {
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {0, 1, 0, 3, 12};
+
+        System.out.println("Before moving zeroes:");
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        sol.moveZeroes(nums);
+
+        System.out.println("After moving zeroes:");
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+    }
+}
