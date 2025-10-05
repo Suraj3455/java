@@ -1,24 +1,25 @@
 public class RemoveDuplicates {
-    public static void main(String[] args) {
-        int[] arr = {10, 20, 20, 30, 30, 30, 40, 50, 50};
-        int n = arr.length;
+    public static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0;
 
-        if (n == 0) return; // empty array
-
-        int j = 0; // index of last unique element
-
-        // Traverse from second element
-        for (int i = 1; i < n; i++) {
-            if (arr[i] != arr[j]) {
-                j++;         // move to next position
-                arr[j] = arr[i]; // store unique element
+        int i = 0;  // slow pointer
+        for (int j = 1; j < nums.length; j++) {  // fast pointer
+            if (nums[i] != nums[j]) {  // found new unique element
+                i++;
+                nums[i] = nums[j];  // move unique element forward
             }
         }
+        return i + 1;  // new length
+    }
 
-        // j+1 is the new size of array without duplicates
-        System.out.println("Array after removing duplicates:");
-        for (int i = 0; i <= j; i++) {
-            System.out.print(arr[i] + " ");
+    public static void main(String[] args) {
+        int[] nums = {1, 1, 2, 2, 3, 4};
+        int length = removeDuplicates(nums);
+
+        System.out.println("New Length: " + length);
+        System.out.print("Array after removing duplicates: ");
+        for (int i = 0; i < length; i++) {
+            System.out.print(nums[i] + " ");
         }
     }
 }
